@@ -51,8 +51,7 @@ class MemeTableViewController: UITableViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
 
         let memeDetail = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
-        let meme = self.memes[(indexPath as NSIndexPath).row]
-        memeDetail.meme = meme
+        memeDetail.meme = memes[(indexPath as NSIndexPath).row]
         self.navigationController!.pushViewController(memeDetail, animated: true)
 
     }
