@@ -12,7 +12,7 @@ import UIKit
 class MemeTableViewController: UITableViewController {
     
     // MARK: Properties
-       var memes: [Meme]! {
+       var memes: [Meme] {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         return appDelegate.memes
@@ -42,19 +42,18 @@ class MemeTableViewController: UITableViewController {
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
         // Set the name and image
-        cell.textLabel?.text = meme.topText 
+        cell.textLabel?.text = meme.topText + " " + meme.bottomText
         cell.imageView?.image = meme.memedImage
 
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
-
-        let memeDetail = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let memeDetail = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         memeDetail.meme = memes[(indexPath as NSIndexPath).row]
-        self.navigationController!.pushViewController(memeDetail, animated: true)
-
-    }
         
+        self.navigationController?.pushViewController(memeDetail, animated: true)
+    }
+    
     
 }

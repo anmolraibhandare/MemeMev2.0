@@ -10,6 +10,8 @@ import UIKit
 
 class SentMemesCollectionViewController: UICollectionViewController{
     
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     // MARK: Properties
     
     // Create a property called memes, and set it to the memes array from the AppDelegate
@@ -23,7 +25,17 @@ class SentMemesCollectionViewController: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let space:CGFloat = 3.0
+        let dimensionWidth = (view.frame.size.width - (3 * space) - 6) / 3.0
+        let dimensionHeight = (view.frame.size.width - (3 * space)) / 3.0
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimensionWidth, height: dimensionHeight)
     }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
@@ -36,14 +48,16 @@ class SentMemesCollectionViewController: UICollectionViewController{
         return self.memes.count
     }
     
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
+
         let meme = self.memes[(indexPath as NSIndexPath).row]
 
         // Set the image
         cell.memeGeneratedImageView.image = meme.memedImage
-
+        
         return cell
     }
 
@@ -56,4 +70,7 @@ class SentMemesCollectionViewController: UICollectionViewController{
 
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndex indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
 }

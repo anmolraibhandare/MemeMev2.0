@@ -1,5 +1,5 @@
 //
-//  memeDetailViewController.swift
+//  MemeDetailViewController.swift
 //  MemeMev1.0
 //
 //  Created by Anmol Raibhandare on 7/1/20.
