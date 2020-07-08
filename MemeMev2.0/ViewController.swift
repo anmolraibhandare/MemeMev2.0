@@ -37,6 +37,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         textField.textAlignment = .center
         textField.text = defaultText
         textField.contentMode = .scaleAspectFit
+        textField.adjustsFontSizeToFitWidth = true
+        textField.contentScaleFactor = 0.1
+        
     }
     
     // MARK: Life Cycle
@@ -65,6 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // Remove keyboard once editing is completed in bottomText
         unsubscribeFromKeyboardNotifications()
     }
+    
     // MARK: Start Over
     
     @objc func startOver() {
@@ -225,6 +229,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         bottomText.text = bottomConstant
         imagePickerView.image = nil
         shareButton.isEnabled = false
+        dismiss(animated: true, completion: nil)
     }
     
 }
