@@ -17,12 +17,14 @@ Project Rubrics can be found [here](https://docs.google.com/document/d/1G2onkzN_
 - Xcode 11.4
 - Swift 5
 
-#### Implementation
-- Use of UIKit
+#### Technologies used:
+- UIKit
 - Set up a navigation structure that creates an intuitive flow through the app
-- Build tables with datasources and delegates
-- Create custom table view cells
-- Implement user interfaces with tab views and collection views
+- Building tables with datasources and delegates
+- Creating custom table view cells
+- Implementing user interfaces with tab views and collection views
+
+#### Implementation
 - The Meme Editor view has a toolbar with two buttons: one that allows user to open the Photo Album to select an image, one that launches the camera.
 - The app displays the image picker when the Album button is pressed.
 - The Camera button is disabled when app is run on devices without a camera, such as the simulator.
